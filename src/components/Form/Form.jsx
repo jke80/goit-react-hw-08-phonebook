@@ -3,8 +3,8 @@ import { FormStyled } from './FormStyled';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { useDispatch, useSelector } from 'react-redux';
 // import { addContact } from 'components/Redux/actions';
-import {selectContacts } from 'redux/selectors';
-import { addContact } from 'redux/contacts.thunk';
+import {selectContacts } from 'redux/contacts/contacts.selectors';
+import { addContact } from 'redux/contacts/contacts.thunk';
 
 const INITIAL_STATE = {
   name: '',
