@@ -1,35 +1,39 @@
 import { useDispatch } from 'react-redux';
 import { authRegister } from 'redux/auth/auth.thunk';
 
-
-
 export const RegisterForm = () => {
   const dispatch = useDispatch();
 
   const handleSubmit = e => {
     e.preventDefault();
     const form = e.currentTarget;
-    dispatch(
-      authRegister({
-        name: form.elements.name.value,
-        email: form.elements.email.value,
-        password: form.elements.password.value,
-      })
-    );
+    try {
+      const data = dispatch(
+        authRegister({
+          name: form.elements.name.value,
+          email: form.elements.email.value,
+          password: form.elements.password.value,
+        })
+      ).unwrap();
+      console.log(data);
+    } catch (error) {
+      console.log(error);
+    }
+
     form.reset();
   };
 
   return (
-    <form  onSubmit={handleSubmit} autoComplete="off">
-      <label >
+    <form onSubmit={handleSubmit} autoComplete="off">
+      <label>
         Username
         <input type="text" name="name" />
       </label>
-      <label >
+      <label>
         Email
         <input type="email" name="email" />
       </label>
-      <label >
+      <label>
         Password
         <input type="password" name="password" />
       </label>

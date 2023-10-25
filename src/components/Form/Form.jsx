@@ -3,7 +3,7 @@ import { FormStyled } from './FormStyled';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { useDispatch, useSelector } from 'react-redux';
 // import { addContact } from 'components/Redux/actions';
-import {selectContacts } from 'redux/contacts/contacts.selectors';
+import { selectContacts } from 'redux/contacts/contacts.selectors';
 import { addContact } from 'redux/contacts/contacts.thunk';
 
 const INITIAL_STATE = {
@@ -30,7 +30,7 @@ export const Form = () => {
       Notify.failure(`${name} is already in contacts`);
       return;
     }
-    dispatch(addContact({ name, phone: number }));
+    dispatch(addContact({ name, number }));
     Notify.success(`Contact ${name} added successfully`);
     setState(INITIAL_STATE);
   };

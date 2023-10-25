@@ -4,7 +4,7 @@ import { ContactStyled } from './ContactStyled';
 import { useDispatch } from 'react-redux';
 import { deleteContact } from 'redux/contacts/contacts.thunk';
 
-export const Contact = ({ contact: { id, name, phone } }) => {
+export const Contact = ({ contact: { id, name, number } }) => {
   const dispatch = useDispatch();
 
   const handelDelete = () => dispatch(deleteContact(id));
@@ -18,7 +18,7 @@ export const Contact = ({ contact: { id, name, phone } }) => {
         </div>
         <div>
           <p>Number:</p>
-          <span>{phone}</span>
+          <span>{number}</span>
         </div>
       </div>
 
