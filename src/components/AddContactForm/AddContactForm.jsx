@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import { FormStyled } from './FormStyled';
+import { AddContactFormStyled } from './AddContactFormStyled';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { useDispatch, useSelector } from 'react-redux';
-// import { addContact } from 'components/Redux/actions';
 import { selectContacts } from 'redux/contacts/contacts.selectors';
 import { addContact } from 'redux/contacts/contacts.thunk';
 
@@ -11,7 +10,7 @@ const INITIAL_STATE = {
   number: '',
 };
 
-export const Form = () => {
+export const AddContactForm = () => {
   const contacts = useSelector(selectContacts);
   const dispatch = useDispatch();
   const [state, setState] = useState(INITIAL_STATE);
@@ -36,7 +35,7 @@ export const Form = () => {
   };
 
   return (
-    <FormStyled onSubmit={handelSubmit}>
+    <AddContactFormStyled onSubmit={handelSubmit}>
       <label>
         Name
         <input
@@ -62,6 +61,6 @@ export const Form = () => {
         />
       </label>
       <button type="submit">Add contact</button>
-    </FormStyled>
+    </AddContactFormStyled>
   );
 };

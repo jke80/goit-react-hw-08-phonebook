@@ -1,6 +1,6 @@
 import { ContactList } from 'components/ContactList/ContactList';
 import { Filter } from 'components/Filter/Filter';
-import { Form } from 'components/Form/Form';
+import { AddContactForm } from 'components/AddContactForm/AddContactForm';
 import { Loading } from 'components/Loading/Loading';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -12,7 +12,7 @@ import {
 } from 'redux/contacts/contacts.selectors';
 import { fetchContacts } from 'redux/contacts/contacts.thunk';
 
-export const ContactsPage = () => {
+const ContactsPage = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -26,7 +26,7 @@ export const ContactsPage = () => {
 
   return (
     <>
-      <Form />
+      <AddContactForm />
       {!!contacts?.length && <Filter />}
       {(isLoading && !error && !!filteredContacts?.length && (
         <h2>
@@ -44,3 +44,5 @@ export const ContactsPage = () => {
     </>
   );
 };
+
+export default ContactsPage;

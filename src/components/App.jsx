@@ -1,23 +1,19 @@
 import React from 'react';
-// import { Form } from './Form/Form';
-// import { ContactList } from './ContactList/ContactList';
-// import { Filter } from './Filter/Filter';
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
-//import { fetchContacts } from 'redux/contacts/contacts.thunk';
-// import { selectContacts, selectError, selectFilteredContacts, selectIsLoading } from 'redux/selectors';
-import { Layout } from './Layout/Layout';
-// import { Loading } from './Loading/Loading';
+import { useEffect, lazy } from 'react';
+
 import { Route, Routes } from 'react-router-dom';
-import { HomePage } from 'pages/HomePage/HomePage';
-import { ContactsPage } from 'pages/ContactsPage/ContactsPage';
-import { LoginPage } from 'pages/LoginPage/LoginPage';
-import { RegisterPage } from 'pages/RegisterPage/RegisterPage';
 import { authCurrent } from 'redux/auth/auth.thunk';
 import { selectIsRefreshing, selectToken } from 'redux/auth/auth.selectors';
 import { PrivateRoute } from './PrivateRoute/PrivateRoute';
 import { RestrictedRoute } from './RestrictedRoute/RestrictedRoute';
 import { Loading } from './Loading/Loading';
+import { Layout } from './Layout/Layout';
+
+const HomePage = lazy(() => import('pages/HomePage/HomePage'));
+const ContactsPage = lazy(() => import('pages/ContactsPage/ContactsPage'));
+const LoginPage = lazy(() => import('pages/LoginPage/LoginPage'));
+const RegisterPage = lazy(() => import('pages/RegisterPage/RegisterPage'));
 
 export const App = () => {
   const dispatch = useDispatch();
