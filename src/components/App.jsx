@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, lazy } from 'react';
 
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import { authCurrent } from 'redux/auth/auth.thunk';
 import { selectIsRefreshing, selectToken } from 'redux/auth/auth.selectors';
 import { PrivateRoute } from './PrivateRoute/PrivateRoute';
@@ -37,7 +37,7 @@ export const App = () => {
           <Route path="register" element={<RegisterPage />} />
         </Route>
 
-        <Route path="*" element={<HomePage />} />
+        <Route path="*" element={<Navigate to="/goit-react-hw-08-phonebook/" />} />
       </Route>
     </Routes>
   ) : (

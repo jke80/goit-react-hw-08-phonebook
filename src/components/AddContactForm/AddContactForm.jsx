@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { AddContactFormStyled } from './AddContactFormStyled';
-import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectContacts } from 'redux/contacts/contacts.selectors';
 import { addContact } from 'redux/contacts/contacts.thunk';
+import { Button, Container, FormLabel, Input, useToast } from '@chakra-ui/react';
+import { AddIcon } from '@chakra-ui/icons';
+
 
 const INITIAL_STATE = {
   name: '',
@@ -14,9 +15,8 @@ export const AddContactForm = () => {
   const contacts = useSelector(selectContacts);
   const dispatch = useDispatch();
   const [state, setState] = useState(INITIAL_STATE);
-
-  // state = { ...INITIAL_STATE };
-
+  const toast = useToast();
+  
   const handelChange = e => {
     setState({ ...state, [e.target.name]: e.target.value });
   };
@@ -26,19 +26,32 @@ export const AddContactForm = () => {
     e.preventDefault();
 
     if (contacts.some(contact => contact.name === name)) {
-      Notify.failure(`${name} is already in contacts`);
+      toast({
+        title: 'Add contact.',
+        description: `${name} is already in contacts`,
+        status: 'error',
+        duration: 5000,
+        isClosable: true,
+      })
       return;
     }
     dispatch(addContact({ name, number }));
-    Notify.success(`Contact ${name} added successfully`);
+    toast({
+      title: 'Add contact.',
+      description: `Contact ${name} added successfully`,
+      status: 'success',
+      duration: 5000,
+      isClosable: true,
+    })
     setState(INITIAL_STATE);
   };
 
   return (
-    <AddContactFormStyled onSubmit={handelSubmit}>
-      <label>
+    <Container maxW='300px' borderWidth='1px' borderRadius='lg' p='10px'>
+    <form onSubmit={handelSubmit}>
+      <FormLabel>
         Name
-        <input
+        <Input
           onChange={handelChange}
           value={state.name}
           type="text"
@@ -47,10 +60,10 @@ export const AddContactForm = () => {
           title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
           required
         />
-      </label>
-      <label>
+      </FormLabel>
+      <FormLabel>
         Number
-        <input
+        <Input
           onChange={handelChange}
           value={state.number}
           type="tel"
@@ -59,8 +72,9 @@ export const AddContactForm = () => {
           title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
           required
         />
-      </label>
-      <button type="submit">Add contact</button>
-    </AddContactFormStyled>
+      </FormLabel>
+      <Button type="submit" leftIcon={<AddIcon/>}>Add Contact</Button>
+    </form>
+    </Container>
   );
 };

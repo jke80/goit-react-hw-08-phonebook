@@ -1,3 +1,4 @@
+import { Button, Text, Wrap } from '@chakra-ui/react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectToken, selectUser } from 'redux/auth/auth.selectors';
 import { authLogout } from 'redux/auth/auth.thunk';
@@ -11,11 +12,11 @@ export const UserMenu = () => {
   };
 
   return (
-    <div>
-      <p>{name},</p>
-      <button type="button" onClick={handleClick}>
+    <Wrap>
+      <Text>{name},</Text>
+      <Button type="button" onClick={handleClick} size='xs'>
         Logout
-      </button>
-    </div>
+      </Button>
+    </Wrap>
   );
 };

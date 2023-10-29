@@ -7,6 +7,6 @@ export const RestrictedRoute = () => {
   return !isLoggedIn ? (
     <Outlet />
   ) : (
-    <Navigate to="/goit-react-hw-08-phonebook/home" />
+    <Navigate to="/goit-react-hw-08-phonebook/" />
   );
 };
