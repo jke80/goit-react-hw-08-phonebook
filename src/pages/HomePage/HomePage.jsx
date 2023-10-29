@@ -7,7 +7,7 @@ const HomePage = () => {
   const { name } = useSelector(selectUser);
 
   return (
-    <Center h='100px'>{isLoggedIn ? <Heading>Welcome back, {name}</Heading> : <Heading>Please log in</Heading>}</Center>
+    <Center h='100px'>{isLoggedIn ? <Heading>Welcome, {name}</Heading> : <Heading>Please log in</Heading>}</Center>
   );
 };
 
