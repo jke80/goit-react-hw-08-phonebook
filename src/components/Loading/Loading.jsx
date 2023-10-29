@@ -1,5 +1,9 @@
-import { Spinner } from '@chakra-ui/react';
+import { Center, Spinner } from '@chakra-ui/react';
 
 export const Loading = () => {
-  return <Spinner />;
+  return (
+    <Center>
+      <Spinner />
+    </Center>
+  );
 };
