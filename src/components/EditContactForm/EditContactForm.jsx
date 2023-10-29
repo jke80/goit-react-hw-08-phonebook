@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { selectContacts } from 'redux/contacts/contacts.selectors';
-import { addContact } from 'redux/contacts/contacts.thunk';
+import { useDispatch } from 'react-redux';
+import { patchContact } from 'redux/contacts/contacts.thunk';
 import {
   Button,
   Center,
@@ -10,17 +9,12 @@ import {
   Input,
   useToast,
 } from '@chakra-ui/react';
-import { AddIcon } from '@chakra-ui/icons';
+import { EditIcon } from '@chakra-ui/icons';
 
-const INITIAL_STATE = {
-  name: '',
-  number: '',
-};
-
-export const AddContactForm = ({ onClose }) => {
-  const contacts = useSelector(selectContacts);
+export const EditContactForm = ({ patchedContact, onClose }) => {
+  const { id, name, number } = patchedContact;
   const dispatch = useDispatch();
-  const [state, setState] = useState(INITIAL_STATE);
+  const [state, setState] = useState({ name, number });
   const toast = useToast();
 
   const handelChange = e => {
@@ -30,26 +24,14 @@ export const AddContactForm = ({ onClose }) => {
   const handelSubmit = e => {
     const { name, number } = state;
     e.preventDefault();
-
-    if (contacts.some(contact => contact.name === name)) {
-      toast({
-        title: 'Add contact.',
-        description: `${name} is already in contacts`,
-        status: 'error',
-        duration: 5000,
-        isClosable: true,
-      });
-      return;
-    }
-    dispatch(addContact({ name, number }));
+    dispatch(patchContact({ id, name, number }));
     toast({
-      title: 'Add contact.',
-      description: `Contact ${name} added successfully`,
+      title: 'Edit contact.',
+      description: `Contact ${name} edited successfully`,
       status: 'success',
       duration: 5000,
       isClosable: true,
     });
-    setState(INITIAL_STATE);
     onClose();
   };
 
@@ -85,9 +67,9 @@ export const AddContactForm = ({ onClose }) => {
             colorScheme="blue"
             variant="outline"
             type="submit"
-            leftIcon={<AddIcon />}
+            leftIcon={<EditIcon />}
           >
-            Add Contact
+            Edit Contact
           </Button>
         </Center>
       </form>

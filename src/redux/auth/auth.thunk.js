@@ -12,7 +12,6 @@ export const authRegister = createAsyncThunk(
   async (creds, thunkAPI) => {
     try {
       const resp = await PublicAPI.post('/users/signup', creds);
-      console.log(resp);
       return resp.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -26,7 +25,6 @@ export const authLogin = createAsyncThunk(
   async (creds, thunkAPI) => {
     try {
       const resp = await PublicAPI.post('/users/login', creds);
-      console.log(resp);
       setAuthHeader(resp.data.token);
       return resp.data;
     } catch (error) {

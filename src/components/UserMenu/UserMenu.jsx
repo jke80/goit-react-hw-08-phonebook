@@ -14,7 +14,7 @@ export const UserMenu = () => {
   return (
     <Wrap>
       <Text>{name},</Text>
-      <Button type="button" onClick={handleClick} size='xs'>
+      <Button colorScheme='blue' variant='outline' type="button" onClick={handleClick} size='xs'>
         Logout
       </Button>
     </Wrap>

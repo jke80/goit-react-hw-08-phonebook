@@ -12,8 +12,7 @@ export const Header=()=>{
         <Flex p='10px' borderWidth='1px' borderRadius='lg' mb='10px' >
             <Navigation/>
             <Spacer/>
-            <AuthNav/>
-            <Spacer/>
+            {!isLoggedIn && <AuthNav/>}
             {isLoggedIn &&<UserMenu/>}
         </Flex>
     );
