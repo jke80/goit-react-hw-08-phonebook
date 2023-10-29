@@ -9,7 +9,7 @@ import { selectIsLoggedIn } from "redux/auth/auth.selectors";
 export const Header=()=>{
     const isLoggedIn = useSelector(selectIsLoggedIn);
     return(
-        <Flex p='10px'>
+        <Flex p='10px' borderWidth='1px' borderRadius='lg' mb='10px' >
             <Navigation/>
             <Spacer/>
             <AuthNav/>

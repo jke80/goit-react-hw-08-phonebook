@@ -31,11 +31,6 @@ export const Contact = ({ contact: { id, name, number } }) => {
   return (
     <ListItem>
       <Wrap>
-        <Avatar size='xs' name={name} />
-        <Text minW='200px'>{name} </Text>
-        <PhoneIcon />
-        <Text minW='200px'>{number}</Text>
-        <Spacer />
         <IconButton
           type="button"
           size='xs'
@@ -43,6 +38,11 @@ export const Contact = ({ contact: { id, name, number } }) => {
           icon={<DeleteIcon />}
           onClick={handelDelete}
         />
+        <Avatar size='xs' name={name} />
+        <Text >{name} </Text>
+        <PhoneIcon />
+        <Text >{number}</Text>
+        <Spacer />
       </Wrap>
     </ListItem>
   );

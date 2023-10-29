@@ -9,11 +9,11 @@ export const PublicAPI = axios.create({
 });
 
 export const setAuthHeader = token => {
-  console.log('setAuthHeader');
+  
   PrivateAPI.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 };
 
 export const clearAuthHeader = () => {
   PrivateAPI.defaults.headers.common['Authorization'] = ``;
-  console.log('clearAuthHeader');
+  
 };

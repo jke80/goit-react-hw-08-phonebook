@@ -8,8 +8,8 @@ export const ContactList = () => {
   const contacts = useSelector(selectFilteredContacts);
 
   return (
-    <Container>
-      <List w="600px" spacing="3">
+    <Container w='100%'>
+      <List spacing="3">
         {contacts.map(contact => (
           <Contact key={contact.id} contact={contact} />
         ))}

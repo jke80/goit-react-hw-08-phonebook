@@ -7,7 +7,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   selectContacts,
   selectError,
-  // selectFilteredContacts,
   selectIsLoading,
 } from 'redux/contacts/contacts.selectors';
 import { fetchContacts } from 'redux/contacts/contacts.thunk';
@@ -20,7 +19,7 @@ const ContactsPage = () => {
   }, [dispatch]);
 
   const contacts = useSelector(selectContacts);
-  // const filteredContacts = useSelector(selectFilteredContacts);
+
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
 
