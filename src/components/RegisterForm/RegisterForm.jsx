@@ -5,6 +5,7 @@ import {
   FormLabel,
   Input,
   Text,
+  Tooltip,
   useToast,
 } from '@chakra-ui/react';
 // import { Loading } from 'components/Loading/Loading';
@@ -68,7 +69,10 @@ export const RegisterForm = () => {
         </FormLabel>
         <FormLabel>
           Password
-          <Input type="password" name="password" />
+          <Tooltip label='Passwords must contain at least seven characters' size='xs'>
+            <Input type="password" name="password"/>
+          </Tooltip>
+          
         </FormLabel>
         <Center>
           <Button colorScheme="blue" variant="outline" type="submit">
