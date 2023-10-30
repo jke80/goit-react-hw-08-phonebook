@@ -15,6 +15,7 @@ import {
   ModalOverlay,
   Spacer,
   Text,
+  Tooltip,
   VStack,
   Wrap,
   useDisclosure,
@@ -45,32 +46,36 @@ export const Contact = ({ contact: { id, name, number } }) => {
         <VStack spacing={4} align="stretch">
           <Wrap>
             <Avatar size="xs" name={name} />
-            <Text>{name} </Text>            
+            <Text>{name} </Text>
           </Wrap>
           <Wrap>
             <PhoneIcon />
 
             <Text>{number}</Text>
             <Spacer />
-            <IconButton
-              colorScheme="blue"
-              variant="outline"
-              type="button"
-              size="xs"
-              aria-label="Edit contact"
-              icon={<EditIcon />}
-              onClick={onOpen}
-            />
-            
-            <IconButton
-              colorScheme="blue"
-              variant="outline"
-              type="button"
-              size="xs"
-              aria-label="Delete contact"
-              icon={<DeleteIcon />}
-              onClick={handelDelete}
-            />
+            <Tooltip label="Edit contact">
+              <IconButton
+                colorScheme="blue"
+                variant="outline"
+                type="button"
+                size="xs"
+                aria-label="Edit contact"
+                icon={<EditIcon />}
+                onClick={onOpen}
+              />
+            </Tooltip>
+
+            <Tooltip label="Delete contact">
+              <IconButton
+                colorScheme="blue"
+                variant="outline"
+                type="button"
+                size="xs"
+                aria-label="Delete contact"
+                icon={<DeleteIcon />}
+                onClick={handelDelete}
+              />
+            </Tooltip>
           </Wrap>
         </VStack>
         <Divider />
