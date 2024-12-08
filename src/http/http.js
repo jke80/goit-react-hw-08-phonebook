@@ -1,11 +1,11 @@
 import axios from 'axios';
 
 export const PrivateAPI = axios.create({
-  baseURL: 'https://connections-api.herokuapp.com',
+ baseURL: 'https://connections-api.goit.global',
 });
 
 export const PublicAPI = axios.create({
-  baseURL: 'https://connections-api.herokuapp.com',
+ baseURL: 'https://connections-api.goit.global',
 });
 
 export const setAuthHeader = token => {
